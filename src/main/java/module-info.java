@@ -5,4 +5,5 @@ module Super.Mario.Yaeger {
 
     opens backgrounds;
     opens audio;
+    opens fonts;
 }
