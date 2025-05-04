@@ -1,0 +1,5 @@
+selectedCharacter=mario
+coins=0
+lives.mario=5
+lives.luigi=5
+lives.toad=5

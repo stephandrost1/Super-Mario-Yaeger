@@ -6,6 +6,7 @@ import com.github.hanyaeger.api.scenes.StaticScene;
 import org.example.SuperMarioYaeger;
 import org.example.entities.buttons.QuitButton;
 import org.example.entities.buttons.StartButton;
+import org.example.entities.texts.titleScene.TotalCoinsText;
 
 public class TitleScene extends StaticScene {
 
@@ -23,13 +24,23 @@ public class TitleScene extends StaticScene {
 
     @Override
     public void setupEntities() {
-        var buttonMargin = 20.0;
-        var startGameButton = new StartButton(new Coordinate2D(buttonMargin, getHeight() / 2 - 40), superMarioYaeger);
+        var entitiesMargin = 20.0;
+
+        // StartGameButton
+        var startGameButton = new StartButton(new Coordinate2D(entitiesMargin, getHeight() / 2 - entitiesMargin * 2), superMarioYaeger);
         startGameButton.setAnchorPoint(AnchorPoint.TOP_LEFT);
         addEntity(startGameButton);
 
-        var quitGameButton = new QuitButton(new Coordinate2D(buttonMargin, getHeight() / 2 + 40), superMarioYaeger);
+        // QuitGameButton
+        var quitGameButton = new QuitButton(new Coordinate2D(entitiesMargin, getHeight() / 2), superMarioYaeger);
         quitGameButton.setAnchorPoint(AnchorPoint.TOP_LEFT);
         addEntity(quitGameButton);
+
+        // TotalCoinsText
+        var totalCoinsText = new TotalCoinsText(new Coordinate2D(entitiesMargin, getHeight() / 2 + entitiesMargin * 2));
+        totalCoinsText.setAnchorPoint(AnchorPoint.TOP_LEFT);
+        addEntity(totalCoinsText);
     }
+
+    // TODO: Build a switch to select the correct character in superMarioYaeger (selectedCharacter, selectedCharacterLives)
 }
