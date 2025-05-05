@@ -8,9 +8,6 @@ import com.github.hanyaeger.api.userinput.MouseExitListener;
 import javafx.scene.Cursor;
 import javafx.scene.input.MouseButton;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import org.example.SuperMarioYaeger;
 import org.example.utils.FontManager;
 
@@ -24,9 +21,6 @@ public class QuitButton extends TextEntity implements MouseButtonPressedListener
 
         setFill(Color.WHITE);
         setFont(FontManager.getPressStartFont(16));
-
-        var background = new Rectangle(getWidth(), getHeight(), Color.WHITE);
-        background.setOpacity(0.25);
     }
 
     @Override
@@ -36,13 +30,11 @@ public class QuitButton extends TextEntity implements MouseButtonPressedListener
 
     @Override
     public void onMouseEntered() {
-        setFill(Color.WHITE);
         setCursor(Cursor.HAND);
     }
 
     @Override
     public void onMouseExited() {
-        setFill(Color.WHITE);
         setCursor(Cursor.DEFAULT);
     }
 }

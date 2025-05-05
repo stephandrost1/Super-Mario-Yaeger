@@ -7,35 +7,37 @@ import org.example.entities.characters.Character;
 import org.example.entities.characters.Luigi;
 import org.example.entities.characters.Mario;
 import org.example.entities.characters.Toad;
+import org.example.utils.FileManager;
 
 public class LevelScene extends DynamicScene {
 
     private SuperMarioYaeger superMarioYaeger;
-//    private Character currentCharacter;
+    private Character currentCharacter;
 
     public LevelScene(SuperMarioYaeger superMarioYaeger) {
         this.superMarioYaeger = superMarioYaeger;
-
-//        String selectedCharacterName = superMarioYaeger.selectedCharacter;
-//        currentCharacter = createCharacter(selectedCharacterName);
     }
 
     @Override
     public void setupScene() {
-        // Set up the level scene here
+        setBackgroundAudio("audio/level-scene.mp3");
+        setBackgroundImage("backgrounds/level-scene.png");
+        currentCharacter = createCharacter();
     }
 
     @Override
     public void setupEntities() {
-        // Set up entities for the level scene here
+        addEntity(currentCharacter);
     }
 
-    // TODO: Implement character selection logic
-//    private Character createCharacter(String characterName) {
-//        return switch (characterName.toLowerCase()) {
-//            case "luigi" -> new Luigi(new Coordinate2D(0, 0));
-//            case "toad" -> new Toad(new Coordinate2D(0, 0));
-//            default -> new Mario(new Coordinate2D(0, 0));
-//        };
-//    }
+    private Character createCharacter() {
+        String characterName = FileManager.read("selectedCharacter", "mario");
+        Coordinate2D initialPosition = new Coordinate2D(10, getHeight() - 125);
+
+        return switch (characterName.toLowerCase()) {
+            case "luigi" -> new Luigi(initialPosition);
+            case "toad" -> new Toad(initialPosition);
+            default -> new Mario(initialPosition);
+        };
+    }
 }
