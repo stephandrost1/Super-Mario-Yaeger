@@ -1,9 +1,12 @@
 package org.example.scenes;
 
 import com.github.hanyaeger.api.Coordinate2D;
+import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.scenes.DynamicScene;
+
 import org.example.SuperMarioYaeger;
-import org.example.entities.characters.Character;
+import org.example.entities.Collision.Floor;
+import org.example.entities.characters.CharacterPlayer;
 import org.example.entities.characters.Luigi;
 import org.example.entities.characters.Mario;
 import org.example.entities.characters.Toad;
@@ -12,7 +15,7 @@ import org.example.utils.FileManager;
 public class LevelScene extends DynamicScene {
 
     private SuperMarioYaeger superMarioYaeger;
-    private Character currentCharacter;
+    private CharacterPlayer currentCharacter;
 
     public LevelScene(SuperMarioYaeger superMarioYaeger) {
         this.superMarioYaeger = superMarioYaeger;
@@ -28,9 +31,18 @@ public class LevelScene extends DynamicScene {
     @Override
     public void setupEntities() {
         addEntity(currentCharacter);
+        
+        var bottomFloor = new Floor(new Coordinate2D(0, 565), //grass level
+                new Size(800, 10));
+        addEntity(bottomFloor);
+        
+        var secondFloor = new Floor(new Coordinate2D(400, 400),
+                new Size(150, 10));
+        addEntity(secondFloor);
+
     }
 
-    private Character createCharacter() {
+    private CharacterPlayer createCharacter() {
         String characterName = FileManager.read("selectedCharacter", "mario");
         Coordinate2D initialPosition = new Coordinate2D(10, getHeight() - 125);
 

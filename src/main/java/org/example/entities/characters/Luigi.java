@@ -2,7 +2,7 @@ package org.example.entities.characters;
 
 import com.github.hanyaeger.api.Coordinate2D;
 
-public class Luigi extends Character {
+public class Luigi extends CharacterPlayer {
 
     public final String NAME = "Luigi";
     public final int HEALTH = 100;

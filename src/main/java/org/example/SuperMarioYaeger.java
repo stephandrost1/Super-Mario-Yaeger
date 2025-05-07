@@ -13,7 +13,7 @@ public class SuperMarioYaeger extends YaegerGame
 
     public static void main( String[] args )
     {
-        launch(args);
+    	 launch(args);
     }
 
     @Override
